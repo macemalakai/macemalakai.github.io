@@ -1,0 +1,124 @@
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height:100%;
+  background-image:url("http://i.imgur.com/JFT2BcI.png");
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  height:100%;
+  display: border-box;
+  margin: 0;
+}
+
+@font-face {
+    font-family: "terminator";
+    src: url('terminator real nfi.ttf');
+}
+
+h1 {
+  padding-top: 40px;
+  padding-bottom:20px;
+  text-align: center;
+  font-family: "terminator";
+  color:rgba(0,0,0, .6);
+  text-shadow: 2px 2px #ffffff;
+  font-size:50px;
+}
+
+h5 {
+  text-align: right;
+  font-size:18px;
+}
+
+.container {
+  margin: 40px;
+}
+
+.yellow-pages {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  height:100px;
+  width:100px;
+}
+
+.top-buttons {
+  display:inline-block;
+}
+
+.bottom-buttons {
+  display:inline-block;
+}
+
+.yellow-pages {
+  margin-left: 30px 30px;
+  width: 140px;
+  height:100px;
+  padding: 20px;
+}
+
+.ammo-count {
+  font-family:"terminator";
+  text-shadow: 1px 1px #ffffff;
+  color:rgba(0,0,0, .75);
+  padding:300px 60px;
+}
+
+.clicked {
+  box-shadow: 0 1px 0 #000000;
+  top: 3px;
+}
+/*Class for clicking of a Button*/
+
+#top-left-button {
+  border: 1px solid white;
+  height:45px;
+  width:270px;
+  background-color:rgba(0,0,0,.5);
+  border-radius:8px;
+}
+
+#top-middle-button{
+  border: 1px solid white;
+  height:45px;
+  width:270px;
+  background-color:rgba(0,0,0,.5);
+  border-radius:8px;
+  text-align: center;
+}
+
+#top-right-button{
+  border: 1px solid white;
+  height:45px;
+  width:270px;
+  background-color:rgba(0,0,0,.5);
+  border-radius:8px;
+}
+
+#bottom-left-button {
+  border: 1px solid white;
+  height:45px;
+  width:270px;
+  background-color:rgba(0,0,0,.5);
+  border-radius:8px;
+}
+
+#bottom-middle-button{
+  border: 1px solid white;
+  height:45px;
+  width:270px;
+  background-color:rgba(0,0,0,.5);
+  border-radius:8px;
+  text-align: center;
+}
+
+#bottom-right-button{
+  border: 1px solid white;
+  height:45px;
+  width:270px;
+  background-color:rgba(0,0,0,.5);
+  border-radius:8px;
+}
