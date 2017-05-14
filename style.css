@@ -139,7 +139,10 @@ h5 {
   border: 1px solid #ffffff
 }
 
+#enemies {
 
+  text-align: center
+}
 
 #top-left-button {
   border: 1px solid #ffffff;

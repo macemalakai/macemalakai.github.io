@@ -24,6 +24,22 @@ $(document).ready(function (){
 
   // Functions for Mousing over and clicking buttons.
   // Come back to later and try to wrap all of this up in a function or two.
+  $("#bottom-right-button").on("mouseenter", function() {
+    $(this).css("background-color", "rgba(255,255,255, .3)");
+  });
+
+  $("#bottom-right-button").on("mouseleave", function() {
+    $(this).css("background-color", "rgba(0,0,0, .5)");
+  });
+
+
+  $("#bottom-right-button").on("click", function() {
+    $(this).addClass("clicked");
+    ammoCount += 9;
+    // Assigning the original ammo starter to the bottom-right-button, which should hopefully have the Text "Alamo Guns", by this point."
+    $("h5").html(`AMMO: ${ammoCount}`);
+    $(this).off();
+});
 
 
   $("#top-left-button").on("mouseenter", function() {
@@ -107,25 +123,10 @@ $(document).ready(function (){
   });
   //Bottom Middle button clicking
 
-  $("#bottom-right-button").on("mouseenter", function() {
-    $(this).css("background-color", "rgba(255,255,255, .3)");
-  });
 
-  $("#bottom-right-button").on("mouseleave", function() {
-    $(this).css("background-color", "rgba(0,0,0, .5)");
-  });
-
-
-  $("#bottom-right-button").on("click", function() {
-    $(this).addClass("clicked");
-    ammoCount += 9;
-    // Assigning the original ammo starter to the bottom-right-button, which should hopefully have the Text "Alamo Guns", by this point."
-    $("h5").html(`AMMO: ${ammoCount}`);
-    $(this).off();
-  });
 
   //Bottom Right Button Clicking
-  
+
 
 
   var chosenLocations = [];
@@ -163,6 +164,12 @@ $(document).ready(function (){
 
   var pushToButtons = function() {
 
+    $("#bottom-right-button").html(chosenLocations[0]).addClass("button-text");
+    chosenLocations.splice(current, 1);
+    console.log(chosenLocations, "CHOSEN LOCATIONS 6");
+    current = Math.ceil(Math.random() *  chosenLocations.length - 1);
+
+
     var current = Math.ceil(Math.random() *  chosenLocations.length - 1);
 
     $("#top-left-button").html(chosenLocations[current]).addClass("button-text");
@@ -190,13 +197,7 @@ $(document).ready(function (){
     console.log(chosenLocations, "CHOSEN LOCATIONS 5");
     current = Math.ceil(Math.random() *  chosenLocations.length - 1);
 
-    $("#bottom-right-button").html(chosenLocations[current]).addClass("button-text");
-    chosenLocations.splice(current, 1);
-    console.log(chosenLocations, "CHOSEN LOCATIONS 6");
-    current = Math.ceil(Math.random() *  chosenLocations.length - 1);
   };
-
-
 
 
 $(".yellow-pages").on("click", pushToButtons);
@@ -216,14 +217,6 @@ $(".yellow-pages").on("click", pushToButtons);
 
 
 });
-
-
-
-
-// $(".yellow-pages").on("click", pushToButtons());
-
-
-
 
 
 
