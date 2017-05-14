@@ -7,12 +7,13 @@ body {
   height:100%;
   background-image:url("http://i.imgur.com/JFT2BcI.png");
   background-size: cover !important;
-  background-repeat: no-repeat;
+  background-repeat:repeat-y;
   height:100%;
   display: border-box;
   margin: 0;
 }
 
+/*Sourcing font file from current directory*/
 @font-face {
     font-family: "terminator";
     src: url('terminator real nfi.ttf');
@@ -23,7 +24,7 @@ header {
 }
 
 h1 {
-  padding-top: 40px;
+  padding-top: 60px;
   padding-bottom:20px;
   text-align: center;
   font-family: "terminator";
@@ -36,6 +37,7 @@ h5 {
   text-align: right;
   font-size:18px;
 }
+
 
 .container {
   margin: 40px;
@@ -50,15 +52,24 @@ h5 {
 }
 
 .top-buttons {
-  display:inline-block;
+  height: 80px;
+  line-height: 80px;
+  width:270px;
+  /*text-align: center;
+  vertical-align: middle;*/
+
 }
 
 .bottom-buttons {
-  display:inline-block;
+  line-height: 80px;
+  width:270px;
+  height:80px;
+  /*text-align: center;
+  vertical-align: middle;*/
 }
 
 .yellow-pages {
-  margin-left: 50px 50px;
+  margin-left: 50px;
   width: 140px;
   height:100px;
   padding: 50px;
@@ -72,68 +83,108 @@ h5 {
 }
 
 .clicked {
-  box-shadow: 0 1px 0 #000000;
-  top: 3px;
+  box-shadow: 0 2px 2px #000000;
+  text-decoration: line-through;
+  /*top: 3px;*/
 }
 /*Class for clicking of a Button*/
 
 .button-text {
   font-family: "terminator";
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   text-shadow: 2px 2px #000000;
   text-align: center;
-  padding-top: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
+  vertical-align:middle;
+  /*line-height: 30px; Add in for @media*/
+}
+
+.row-1 {
+  display:flex;
+  flex:1;
+  align-items: center;
+  margin-bottom:80px;
+  width: 100%;
+  height:100%;
+  justify-content: space-around;
+
+}
+
+.row-2 {
+  display:flex;
+  flex:1;
+  width: 100%;
+  height:100%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 
+
+.image-connor {
+  display: none;
+  height:150px;
+  width:150px;
+  background-image: url("http://i.imgur.com/GnK1x1i.jpg");
+  background-size: cover;
+  border: 1px solid #ffffff;
+}
+
+.image-reese {
+  display:none;
+  height:150px;
+  width:150px;
+  background-image: url("http://i.imgur.com/YFEUWax.jpg");
+  background-size: cover;
+  border: 1px solid #ffffff
+}
+
+#enemies {
+  margin: 20px auto;
+  text-align: center
+}
+
 #top-left-button {
   border: 1px solid #ffffff;
-  height:45px;
-  width:270px;
   background-color:rgba(0,0,0,.5);
   border-radius:8px;
 }
 
 #top-middle-button{
   border: 1px solid white;
-  height:45px;
-  width:270px;
+  /*height:45px;
+  width:270px;*/
   background-color:rgba(0,0,0,.5);
   border-radius:8px;
-  text-align: center;
 }
 
 #top-right-button{
   border: 1px solid white;
-  height:45px;
-  width:270px;
+  /*height:45px;
+  width:270px;*/
   background-color:rgba(0,0,0,.5);
   border-radius:8px;
 }
 
 #bottom-left-button {
   border: 1px solid white;
-  height:45px;
-  width:270px;
+  /*height:45px;
+  width:270px;*/
   background-color:rgba(0,0,0,.5);
   border-radius:8px;
 }
 
 #bottom-middle-button{
   border: 1px solid white;
-  height:45px;
-  width:270px;
+  /*height:45px;
+  width:270px;*/
   background-color:rgba(0,0,0,.5);
   border-radius:8px;
-  text-align: center;
 }
 
 #bottom-right-button{
   border: 1px solid white;
-  height:45px;
-  width:270px;
+  /*height:45px;
+  width:270px;*/
   background-color:rgba(0,0,0,.5);
   border-radius:8px;
 }
