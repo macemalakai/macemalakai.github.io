@@ -33,6 +33,16 @@ h1 {
   font-size:50px;
 }
 
+h4 {
+  font-family: "terminator";
+  font-size: 12px;
+  padding:20px;
+  text-align: left;
+  line-height:15px;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.4);
+  color: rgba(0,0,0,.7);
+}
+
 h5 {
   text-align: right;
   font-size:18px;
@@ -41,6 +51,17 @@ h5 {
 
 .container {
   margin: 40px;
+}
+
+.instructions {
+  width: 100%;
+  height:15%;
+  background-color: rgba(255, 255, 255, 0.4);
+  text-shadow:
+  border-radius:8px;
+  border: 1px solid rgba(0,0,0,.6);
+  margin:10px auto;
+  border-radius:8px;
 }
 
 .yellow-pages {
@@ -79,7 +100,7 @@ h5 {
   font-family:"terminator";
   text-shadow: 1px 1px #ffffff;
   color:rgba(0,0,0, .75);
-  padding:300px 60px;
+  padding:100px 80px 200px 0;
 }
 
 .clicked {

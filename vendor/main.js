@@ -2,7 +2,21 @@ $(document).ready(function (){
   console.log("js and jQuery loaded!");
 
 
+  // Loading instructions after a bit on page load.
 
+var instructionMessage = "Welcome! You are a Cyberdyne Systems series T-800, Model 101 Terminator (living tissue over a metal endoskeleton). Your objective: Find and terminate Sarah Connor. First, check the Yellow Pages, where you'll find possible locations Sarah may be hiding. Then to the gun shop, where you should find 15 rounds of ammo to complete your objective. You must eliminate Sarah bofore you run out of ammo. Good luck!";
+
+
+var instruct = function(){
+  $("h4").html(`${instructionMessage}`);
+};
+setTimeout(instruct, 2000);
+
+// instruct();
+
+setTimeout(function(){
+  $("instructions").html(`${instructionMessage}`);
+}, 3000);
   // Global Variables and objects
 
   var ammoCount = 0;
@@ -15,7 +29,7 @@ $(document).ready(function (){
       "Under the Bridge",
       "Restaurant",
       "Crappy Motel",
-      "Technoir: Club",
+      "Technoir | Club",
       "Police Station",
       "Apartment"
     ]
@@ -35,7 +49,7 @@ $(document).ready(function (){
 
   $("#bottom-right-button").on("click", function() {
     $(this).addClass("clicked");
-    ammoCount += 9;
+    ammoCount += 14;
     // Assigning the original ammo starter to the bottom-right-button, which should hopefully have the Text "Alamo Guns", by this point."
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
@@ -52,7 +66,7 @@ $(document).ready(function (){
 
   $("#top-left-button").on("click", function() {
     $(this).addClass("clicked");
-    ammoCount -= 2;
+    ammoCount -= 3;
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
@@ -69,7 +83,7 @@ $(document).ready(function (){
 
   $("#top-right-button").on("click", function() {
     $(this).addClass("clicked");
-    ammoCount -= 2;
+    ammoCount -= 3;
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
@@ -85,7 +99,7 @@ $(document).ready(function (){
 
   $("#top-middle-button").on("click", function() {
     $(this).addClass("clicked");
-    ammoCount -= 2;
+    ammoCount -= 4;
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
@@ -100,7 +114,7 @@ $(document).ready(function (){
   });
   $("#bottom-left-button").on("click", function() {
     $(this).addClass("clicked");
-    ammoCount -= 2;
+    ammoCount -= 3;
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
@@ -117,7 +131,7 @@ $(document).ready(function (){
 
   $("#bottom-middle-button").on("click", function() {
     $(this).addClass("clicked");
-    ammoCount -= 2;
+    ammoCount -= 4;
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
