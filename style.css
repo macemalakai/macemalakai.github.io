@@ -13,7 +13,7 @@ body {
   margin: 0;
 }
 
-/*Sourcing font file from current directory*/
+/*Sourcing font file from directory*/
 @font-face {
     font-family: "terminator";
     src: url('terminator real nfi.ttf');
@@ -133,15 +133,13 @@ h5 {
   display:none;
   height:150px;
   width:150px;
+  margin: 20px auto;
   background-image: url("http://i.imgur.com/YFEUWax.jpg");
   background-size: cover;
   border: 1px solid #ffffff
 }
 
-#enemies {
-  margin: 20px auto;
-  text-align: center
-}
+
 
 #top-left-button {
   border: 1px solid #ffffff;

@@ -5,7 +5,7 @@ $(document).ready(function (){
 
   // Global Variables and objects
 
-  var $ammoCount = 0;
+  var ammoCount = 0;
 
   var allLocations = {
     locationsToChooseFrom: [
@@ -25,6 +25,7 @@ $(document).ready(function (){
   // Functions for Mousing over and clicking buttons.
   // Come back to later and try to wrap all of this up in a function or two.
 
+
   $("#top-left-button").on("mouseenter", function() {
     $(this).css("background-color", "rgba(255,255,255, .3)");
   });
@@ -35,6 +36,8 @@ $(document).ready(function (){
 
   $("#top-left-button").on("click", function() {
     $(this).addClass("clicked");
+    ammoCount -= 2;
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
 
@@ -50,6 +53,8 @@ $(document).ready(function (){
 
   $("#top-right-button").on("click", function() {
     $(this).addClass("clicked");
+    ammoCount -= 2;
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
   // Top Right Button Clicking.
@@ -64,6 +69,8 @@ $(document).ready(function (){
 
   $("#top-middle-button").on("click", function() {
     $(this).addClass("clicked");
+    ammoCount -= 2;
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
   //Top middle button clicking.
@@ -77,6 +84,8 @@ $(document).ready(function (){
   });
   $("#bottom-left-button").on("click", function() {
     $(this).addClass("clicked");
+    ammoCount -= 2;
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
 
@@ -92,6 +101,8 @@ $(document).ready(function (){
 
   $("#bottom-middle-button").on("click", function() {
     $(this).addClass("clicked");
+    ammoCount -= 2;
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
   //Bottom Middle button clicking
@@ -104,13 +115,17 @@ $(document).ready(function (){
     $(this).css("background-color", "rgba(0,0,0, .5)");
   });
 
+
   $("#bottom-right-button").on("click", function() {
     $(this).addClass("clicked");
+    ammoCount += 9;
+    // Assigning the original ammo starter to the bottom-right-button, which should hopefully have the Text "Alamo Guns", by this point."
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
 
   //Bottom Right Button Clicking
-
+  
 
 
   var chosenLocations = [];
@@ -123,14 +138,14 @@ $(document).ready(function (){
       var randomIndex = Math.ceil(Math.random() *  array.length - 1);
 
       chosenLocations.push(array[randomIndex]);
-//Time to append the .image_connor class to a random location
+
 
       array.splice(randomIndex, 1);
       // if(chosenLocations[0] === allLocations.locationsToChooseFrom[0]) {
       //   allLocations.locationsToChooseFrom[0].addClass(".image_connor");
       // }
     }
-    array.splice(randomIndex);
+    array.splice(randomIndex,1);
     console.log(randomIndex, "SPLICED INDEX");
   };
   randomLocation(allLocations.locationsToChooseFrom);
@@ -182,15 +197,22 @@ $(document).ready(function (){
   };
 
 
-var addConnor = function () {
-  let buttons = ["#bottom-right-button","#bottom-middle-button","#bottom-left-button","#top-right-button","#top-middle-button","#top-right-button"];
-  let randomIndex = Math.ceil(Math.random() *  array.length - 1);
-  console.log(buttons[0]);
-};
-addConnor();
 
 
-  $(".yellow-pages").on("click", pushToButtons);
+$(".yellow-pages").on("click", pushToButtons);
+
+
+
+
+//Adding image of Sarah Connor to random index of buttons.
+// var addConnor = function () {
+//   let buttons = ["#bottom-right-button","#bottom-middle-button","#bottom-left-button","#top-right-button","#top-middle-button","#top-right-button"];
+//   let randomIndex = Math.ceil(Math.random() *  buttons.length - 1);
+//   $(buttons[randomIndex]).addClass("image-connor");
+// };
+// addConnor();
+
+
 
 
 });
