@@ -2,26 +2,94 @@ $(document).ready(function (){
   console.log("js and jQuery loaded!");
 
 
+  // Loading instructions after a bit on page load.
 
+  var instructionMessage = "Welcome! You are a Cyberdyne Systems series T-800, Model 101 Terminator (living tissue over a metal endoskeleton). Your objective: Find and terminate Sarah Connor. First, check the Yellow Pages, in the lower-left corner, where you'll find possible locations Sarah may be hiding. Then to the gun shop, where you should find 20 rounds of ammo to complete your objective. You must eliminate Sarah bofore you run out of ammo. Good luck!";
+
+
+  var instruct = function(){
+    $("h4").html(`${instructionMessage}`);
+  };
+
+  instruct();
+  //
+  // setTimeout(function(){
+  //   $("instructions").html(`${instructionMessage}`);
+  // }, 3000);
   // Global Variables and objects
 
-  var $ammoCount = 0;
+  var ammoCount = 0;
 
   var allLocations = {
     locationsToChooseFrom: [
-      "Gun Shop",
-      "Small Home",
+      "Alamo Guns",
+      "Work",
       "Suburban Home",
       "Under the Bridge",
       "Restaurant",
-      "Motel: Side of the Road",
-      "Police Station"
+      "Crappy Motel",
+      "Technoir | Club",
+      "Police Station",
+      "Apartment"
     ]
   };
 
 
+
+
+
+
+
+
+  var chosenLocations = [];
+  // Function to choose 6 random locations to push to buttons. Not pushed yet.
+  var randomLocation = function(array) {
+    // Making sure ALAMO GUNS is always present, so user can get ammo at the beginning of the game, every playthrough.
+    chosenLocations[0] = allLocations.locationsToChooseFrom[0];
+    var gunStore = array.splice(array[0], 1);
+    for(let i = 1; i < 6; i++){
+      var randomIndex = Math.ceil(Math.random() *  array.length - 1);
+
+      chosenLocations.push(array[randomIndex]);
+
+
+      array.splice(randomIndex, 1);
+      // if(chosenLocations[0] === allLocations.locationsToChooseFrom[0]) {
+      //   allLocations.locationsToChooseFrom[0].addClass(".image_connor");
+      // }
+    }
+    array.splice(randomIndex,1);
+    console.log(randomIndex, "SPLICED INDEX");
+  };
+  randomLocation(allLocations.locationsToChooseFrom);
+  console.log(chosenLocations, "CHOSEN LOCATIONS");
+
+
+
+
+
+
+
   // Functions for Mousing over and clicking buttons.
   // Come back to later and try to wrap all of this up in a function or two.
+  $("#bottom-right-button").on("mouseenter", function() {
+    $(this).css("background-color", "rgba(255,255,255, .3)");
+  });
+
+  $("#bottom-right-button").on("mouseleave", function() {
+    $(this).css("background-color", "rgba(0,0,0, .5)");
+  });
+
+
+  $("#bottom-right-button").on("click", function() {
+    $(this).addClass("clicked");
+    ammoCount += 19;
+    // Assigning the original ammo starter to the bottom-right-button, which should hopefully have the Text "Alamo Guns", by this point."
+    $("h5").html(`AMMO: ${ammoCount}`);
+    $(this).off();
+    alert("You now have 19 rounds of ammo, as you used one round to blow away the store owner. And now he's dead...");
+  });
+
 
   $("#top-left-button").on("mouseenter", function() {
     $(this).css("background-color", "rgba(255,255,255, .3)");
@@ -33,6 +101,10 @@ $(document).ready(function (){
 
   $("#top-left-button").on("click", function() {
     $(this).addClass("clicked");
+    didWin();
+    ammoCount -= 3;
+    $("h5").html(`AMMO: ${ammoCount}`);
+    alert("You've found and murdered Sarah Connor. In cold blood... You win!!");
     $(this).off();
   });
 
@@ -48,8 +120,12 @@ $(document).ready(function (){
 
   $("#top-right-button").on("click", function() {
     $(this).addClass("clicked");
+    didWin();
+    ammoCount -= 3;
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
+
   // Top Right Button Clicking.
 
   $("#top-middle-button").on("mouseenter", function() {
@@ -62,8 +138,13 @@ $(document).ready(function (){
 
   $("#top-middle-button").on("click", function() {
     $(this).addClass("clicked");
+    didWin();
+    ammoCount -= 4;
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
   });
+
+
   //Top middle button clicking.
 
   $("#bottom-left-button").on("mouseenter", function() {
@@ -75,8 +156,13 @@ $(document).ready(function (){
   });
   $("#bottom-left-button").on("click", function() {
     $(this).addClass("clicked");
+    ammoCount -= 7;
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
+    alert("Kyle Reese was protecting Sarah!! You used 7 rounds of ammo...");
+
   });
+
 
   //Bottom left button clicking.
 
@@ -90,88 +176,91 @@ $(document).ready(function (){
 
   $("#bottom-middle-button").on("click", function() {
     $(this).addClass("clicked");
+    didWin();
+    ammoCount -= 5;
+    $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
+
   });
+
   //Bottom Middle button clicking
 
-  $("#bottom-right-button").on("mouseenter", function() {
-    $(this).css("background-color", "rgba(255,255,255, .3)");
-  });
 
-  $("#bottom-right-button").on("mouseleave", function() {
-    $(this).css("background-color", "rgba(0,0,0, .5)");
-  });
-
-  $("#bottom-right-button").on("click", function() {
-    $(this).addClass("clicked");
-    $(this).off();
-  });
 
   //Bottom Right Button Clicking
 
 
 
-  var chosenLocations = [];
-  // Function to choose 6 random locations to push to buttons. Not pushed yet.
-  var randomLocation = function(array) {
-    for(let i = 0; i < 6; i++){
-      var randomIndex = Math.ceil(Math.random() *  array.length - 1);
 
-      chosenLocations.push(array[randomIndex]);
+  // Give random index of chosenLocations the class of .image_connor and image-reese
 
-      array.splice(randomIndex, 1);
-    }
-  };
+  // Next we'll give an overlay with instructions!
 
-  randomLocation(allLocations.locationsToChooseFrom);
-  console.log(chosenLocations, "CHOSEN LOCATIONS");
 
+
+
+  // Function to push the 6 random locations to the button divs.
 
   var pushToButtons = function() {
 
+    $("#bottom-right-button").html(chosenLocations[0]).addClass("button-text");
+    chosenLocations.splice(current, 1);
+    console.log(chosenLocations, "CHOSEN LOCATIONS 6");
+    current = Math.ceil(Math.random() *  chosenLocations.length - 1);
+
+
     var current = Math.ceil(Math.random() *  chosenLocations.length - 1);
 
-    $("#top-left-button").html(chosenLocations[current]).css("font-family", "terminator").css("color", "white").css("text-shadow", "2px 2px #000000").css("text-align", "center").css("padding-top", "25px").css("padding-left", "5px").css("padding-right", "10px");
+    $("#top-left-button").html(chosenLocations[current]).addClass("button-text");
     chosenLocations.splice(current, 1);
     console.log(chosenLocations, "CHOSEN LOCATIONS 1");
     current = Math.ceil(Math.random() *  chosenLocations.length - 1);
 
-    $("#top-middle-button").html(chosenLocations[current]).css("font-family", "terminator").css("color", "white").css("text-shadow", "2px 2px #000000").css("text-align", "center").css("padding-top", "25px").css("padding-left", "5px").css("padding-right", "10px");
+    $("#top-middle-button").html(chosenLocations[current]).addClass("button-text");
     chosenLocations.splice(current, 1);
     console.log(chosenLocations, "CHOSEN LOCATIONS 2");
     current = Math.ceil(Math.random() *  chosenLocations.length - 1);
 
-    $("#top-right-button").html(chosenLocations[current]).css("font-family", "terminator").css("color", "white").css("text-shadow", "2px 2px #000000").css("text-align", "center").css("padding-top", "25px").css("padding-left", "5px").css("padding-right", "10px");
+    $("#top-right-button").html(chosenLocations[current]).addClass("button-text");
     chosenLocations.splice(current, 1);
     console.log(chosenLocations, "CHOSEN LOCATIONS 3");
     current = Math.ceil(Math.random() *  chosenLocations.length - 1);
 
-    $("#bottom-left-button").html(chosenLocations[current]).css("font-family", "terminator").css("color", "white").css("text-shadow", "2px 2px #000000").css("text-align", "center").css("padding-top", "25px").css("padding-left", "5px").css("padding-right", "10px");
+    $("#bottom-left-button").html(chosenLocations[current]).addClass("button-text");
     chosenLocations.splice(current, 1);
     console.log(chosenLocations, "CHOSEN LOCATIONS 4");
     current = Math.ceil(Math.random() *  chosenLocations.length - 1);
 
-    $("#bottom-middle-button").html(chosenLocations[current]).css("font-family", "terminator").css("color", "white").css("text-shadow", "2px 2px #000000").css("text-align", "center").css("padding-top", "25px").css("padding-left", "5px").css("padding-right", "10px");
+    $("#bottom-middle-button").html(chosenLocations[current]).addClass("button-text");
     chosenLocations.splice(current, 1);
     console.log(chosenLocations, "CHOSEN LOCATIONS 5");
     current = Math.ceil(Math.random() *  chosenLocations.length - 1);
 
-    $("#bottom-right-button").html(chosenLocations[current]).addClass("button-text");
-    chosenLocations.splice(current, 1);
-    console.log(chosenLocations, "CHOSEN LOCATIONS 6");
-    current = Math.ceil(Math.random() *  chosenLocations.length - 1);
+  };
+
+  $(".yellow-pages").on("click", pushToButtons);
+  //Checking conditions for winnning.
+  var didWin = function () {
+    if(ammoCount <= 0) {
+      alert("You ran out of ammo! Perhaps we'll have better luck with the upcoming T-1000!");
+    } else {
+      return;
+    }
   };
 
 
 
-
-  $(".yellow-pages").on("click", pushToButtons);
 });
 
+//Adding image of Sarah Connor to random index of buttons.
+// var addConnor = function () {
+//   let buttons = ["#bottom-right-button","#bottom-middle-button","#bottom-left-button","#top-right-button","#top-middle-button","#top-right-button"];
+//   let randomIndex = Math.ceil(Math.random() *  buttons.length - 1);
+//   $(buttons[randomIndex]).addClass("image-connor");
+// };
+// addConnor();
 
 
-
-// $(".yellow-pages").on("click", pushToButtons());
 
 
 
