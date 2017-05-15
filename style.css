@@ -8,15 +8,14 @@ body {
   background-image:url("http://i.imgur.com/JFT2BcI.png");
   background-size: cover !important;
   background-repeat:repeat-y;
-  height:100%;
   display: border-box;
   margin: 0;
 }
 
 /*Sourcing font file from directory*/
 @font-face {
-    font-family: "terminator";
-    src: url('terminator real nfi.ttf');
+  font-family: "terminator";
+  src: url('terminator real nfi.ttf');
 }
 
 header {

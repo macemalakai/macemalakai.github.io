@@ -4,19 +4,18 @@ $(document).ready(function (){
 
   // Loading instructions after a bit on page load.
 
-var instructionMessage = "Welcome! You are a Cyberdyne Systems series T-800, Model 101 Terminator (living tissue over a metal endoskeleton). Your objective: Find and terminate Sarah Connor. First, check the Yellow Pages, where you'll find possible locations Sarah may be hiding. Then to the gun shop, where you should find 20 rounds of ammo to complete your objective. You must eliminate Sarah bofore you run out of ammo. Good luck!";
+  var instructionMessage = "Welcome! You are a Cyberdyne Systems series T-800, Model 101 Terminator (living tissue over a metal endoskeleton). Your objective: Find and terminate Sarah Connor. First, check the Yellow Pages, in the lower-left corner, where you'll find possible locations Sarah may be hiding. Then to the gun shop, where you should find 20 rounds of ammo to complete your objective. You must eliminate Sarah bofore you run out of ammo. Good luck!";
 
 
-// var instruct = function(){
-//   $("h4").html(`${instructionMessage}`);
-// };
-// setTimeout(instruct, 2000);
-//
-// instruct();
-//
-// setTimeout(function(){
-//   $("instructions").html(`${instructionMessage}`);
-// }, 3000);
+  var instruct = function(){
+    $("h4").html(`${instructionMessage}`);
+  };
+
+  instruct();
+  //
+  // setTimeout(function(){
+  //   $("instructions").html(`${instructionMessage}`);
+  // }, 3000);
   // Global Variables and objects
 
   var ammoCount = 0;
@@ -38,138 +37,8 @@ var instructionMessage = "Welcome! You are a Cyberdyne Systems series T-800, Mod
 
 
 
-$(".yellow-pages").on("click", pushToButtons);
-  //Checking conditions for winnning.
-    var didWin = function () {
-      if(ammoCount <= 0) {
-        alert("You ran out of ammo! To the hydraulic press with you!");
-      } else {
-        return;
-    };
 
 
-
-
-
-
-
-  // Functions for Mousing over and clicking buttons.
-  // Come back to later and try to wrap all of this up in a function or two.
-  $("#bottom-right-button").on("mouseenter", function() {
-    $(this).css("background-color", "rgba(255,255,255, .3)");
-  });
-
-  $("#bottom-right-button").on("mouseleave", function() {
-    $(this).css("background-color", "rgba(0,0,0, .5)");
-  });
-
-
-  $("#bottom-right-button").on("click", function() {
-    $(this).addClass("clicked");
-    ammoCount += 19;
-    // Assigning the original ammo starter to the bottom-right-button, which should hopefully have the Text "Alamo Guns", by this point."
-    $("h5").html(`AMMO: ${ammoCount}`);
-    $(this).off();
-    alert("You now have 19 rounds of ammo, as you used one round wasting the store owner. He's dead...");
-});
-
-
-  $("#top-left-button").on("mouseenter", function() {
-    $(this).css("background-color", "rgba(255,255,255, .3)");
-  });
-
-  $("#top-left-button").on("mouseleave", function() {
-    $(this).css("background-color", "rgba(0,0,0, .5)");
-  });
-
-  $("#top-left-button").on("click", function() {
-    $(this).addClass("clicked");
-    ammoCount -= 3;
-    $("h5").html(`AMMO: ${ammoCount}`);
-    alert("You've found and murdered Sarah Connor. In cold blood... You win!!");
-    $(this).off();
-    didWin();
-  });
-
-  //Wrapping up Top Left Button functionality
-
-  $("#top-right-button").on("mouseenter", function() {
-    $(this).css("background-color", "rgba(255,255,255, .3)");
-  });
-
-  $("#top-right-button").on("mouseleave", function() {
-    $(this).css("background-color", "rgba(0,0,0, .5)");
-  });
-
-  $("#top-right-button").on("click", function() {
-    $(this).addClass("clicked");
-    ammoCount -= 3;
-    $("h5").html(`AMMO: ${ammoCount}`);
-    $(this).off();
-    didWin();
-  });
-
-  // Top Right Button Clicking.
-
-  $("#top-middle-button").on("mouseenter", function() {
-    $(this).css("background-color", "rgba(255,255,255, .3)");
-  });
-
-  $("#top-middle-button").on("mouseleave", function() {
-    $(this).css("background-color", "rgba(0,0,0, .5)");
-  });
-
-  $("#top-middle-button").on("click", function() {
-    $(this).addClass("clicked");
-    ammoCount -= 4;
-    $("h5").html(`AMMO: ${ammoCount}`);
-    $(this).off();
-    didWin();
-  });
-
-
-  //Top middle button clicking.
-
-  $("#bottom-left-button").on("mouseenter", function() {
-    $(this).css("background-color", "rgba(255,255,255, .3)");
-  });
-
-  $("#bottom-left-button").on("mouseleave", function() {
-    $(this).css("background-color", "rgba(0,0,0, .5)");
-  });
-  $("#bottom-left-button").on("click", function() {
-    $(this).addClass("clicked");
-    ammoCount -= 7;
-    $("h5").html(`AMMO: ${ammoCount}`);
-    $(this).off();
-    alert("Kyle Reese was protecting Sarah!! You used 7 rounds of ammo...");
-    didWin();
-  });
-
-
-  //Bottom left button clicking.
-
-  $("#bottom-middle-button").on("mouseenter", function() {
-    $(this).css("background-color", "rgba(255,255,255, .3)");
-  });
-
-  $("#bottom-middle-button").on("mouseleave", function() {
-    $(this).css("background-color", "rgba(0,0,0, .5)");
-  });
-
-  $("#bottom-middle-button").on("click", function() {
-    $(this).addClass("clicked");
-    ammoCount -= 5;
-    $("h5").html(`AMMO: ${ammoCount}`);
-    $(this).off();
-    didWin();
-  });
-
-  //Bottom Middle button clicking
-
-
-
-  //Bottom Right Button Clicking
 
 
   var chosenLocations = [];
@@ -196,14 +65,141 @@ $(".yellow-pages").on("click", pushToButtons);
   console.log(chosenLocations, "CHOSEN LOCATIONS");
 
 
-// Give random index of chosenLocations the class of .image_connor and image-reese
-
-// Next we'll give an overlay with instructions!
 
 
 
 
-// Function to push the 6 random locations to the button divs.
+
+  // Functions for Mousing over and clicking buttons.
+  // Come back to later and try to wrap all of this up in a function or two.
+  $("#bottom-right-button").on("mouseenter", function() {
+    $(this).css("background-color", "rgba(255,255,255, .3)");
+  });
+
+  $("#bottom-right-button").on("mouseleave", function() {
+    $(this).css("background-color", "rgba(0,0,0, .5)");
+  });
+
+
+  $("#bottom-right-button").on("click", function() {
+    $(this).addClass("clicked");
+    ammoCount += 19;
+    // Assigning the original ammo starter to the bottom-right-button, which should hopefully have the Text "Alamo Guns", by this point."
+    $("h5").html(`AMMO: ${ammoCount}`);
+    $(this).off();
+    alert("You now have 19 rounds of ammo, as you used one round to blow away the store owner. And now he's dead...");
+  });
+
+
+  $("#top-left-button").on("mouseenter", function() {
+    $(this).css("background-color", "rgba(255,255,255, .3)");
+  });
+
+  $("#top-left-button").on("mouseleave", function() {
+    $(this).css("background-color", "rgba(0,0,0, .5)");
+  });
+
+  $("#top-left-button").on("click", function() {
+    $(this).addClass("clicked");
+    didWin();
+    ammoCount -= 3;
+    $("h5").html(`AMMO: ${ammoCount}`);
+    alert("You've found and murdered Sarah Connor. In cold blood... You win!!");
+    $(this).off();
+  });
+
+  //Wrapping up Top Left Button functionality
+
+  $("#top-right-button").on("mouseenter", function() {
+    $(this).css("background-color", "rgba(255,255,255, .3)");
+  });
+
+  $("#top-right-button").on("mouseleave", function() {
+    $(this).css("background-color", "rgba(0,0,0, .5)");
+  });
+
+  $("#top-right-button").on("click", function() {
+    $(this).addClass("clicked");
+    didWin();
+    ammoCount -= 3;
+    $("h5").html(`AMMO: ${ammoCount}`);
+    $(this).off();
+  });
+
+  // Top Right Button Clicking.
+
+  $("#top-middle-button").on("mouseenter", function() {
+    $(this).css("background-color", "rgba(255,255,255, .3)");
+  });
+
+  $("#top-middle-button").on("mouseleave", function() {
+    $(this).css("background-color", "rgba(0,0,0, .5)");
+  });
+
+  $("#top-middle-button").on("click", function() {
+    $(this).addClass("clicked");
+    didWin();
+    ammoCount -= 4;
+    $("h5").html(`AMMO: ${ammoCount}`);
+    $(this).off();
+  });
+
+
+  //Top middle button clicking.
+
+  $("#bottom-left-button").on("mouseenter", function() {
+    $(this).css("background-color", "rgba(255,255,255, .3)");
+  });
+
+  $("#bottom-left-button").on("mouseleave", function() {
+    $(this).css("background-color", "rgba(0,0,0, .5)");
+  });
+  $("#bottom-left-button").on("click", function() {
+    $(this).addClass("clicked");
+    ammoCount -= 7;
+    $("h5").html(`AMMO: ${ammoCount}`);
+    $(this).off();
+    alert("Kyle Reese was protecting Sarah!! You used 7 rounds of ammo...");
+
+  });
+
+
+  //Bottom left button clicking.
+
+  $("#bottom-middle-button").on("mouseenter", function() {
+    $(this).css("background-color", "rgba(255,255,255, .3)");
+  });
+
+  $("#bottom-middle-button").on("mouseleave", function() {
+    $(this).css("background-color", "rgba(0,0,0, .5)");
+  });
+
+  $("#bottom-middle-button").on("click", function() {
+    $(this).addClass("clicked");
+    didWin();
+    ammoCount -= 5;
+    $("h5").html(`AMMO: ${ammoCount}`);
+    $(this).off();
+
+  });
+
+  //Bottom Middle button clicking
+
+
+
+  //Bottom Right Button Clicking
+
+
+
+
+  // Give random index of chosenLocations the class of .image_connor and image-reese
+
+  // Next we'll give an overlay with instructions!
+
+
+
+
+  // Function to push the 6 random locations to the button divs.
 
   var pushToButtons = function() {
 
@@ -242,7 +238,15 @@ $(".yellow-pages").on("click", pushToButtons);
 
   };
 
-
+  $(".yellow-pages").on("click", pushToButtons);
+  //Checking conditions for winnning.
+  var didWin = function () {
+    if(ammoCount <= 0) {
+      alert("You ran out of ammo! Perhaps we'll have better luck with the upcoming T-1000!");
+    } else {
+      return;
+    }
+  };
 
 
 
