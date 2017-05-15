@@ -4,19 +4,19 @@ $(document).ready(function (){
 
   // Loading instructions after a bit on page load.
 
-var instructionMessage = "Welcome! You are a Cyberdyne Systems series T-800, Model 101 Terminator (living tissue over a metal endoskeleton). Your objective: Find and terminate Sarah Connor. First, check the Yellow Pages, where you'll find possible locations Sarah may be hiding. Then to the gun shop, where you should find 15 rounds of ammo to complete your objective. You must eliminate Sarah bofore you run out of ammo. Good luck!";
+var instructionMessage = "Welcome! You are a Cyberdyne Systems series T-800, Model 101 Terminator (living tissue over a metal endoskeleton). Your objective: Find and terminate Sarah Connor. First, check the Yellow Pages, where you'll find possible locations Sarah may be hiding. Then to the gun shop, where you should find 20 rounds of ammo to complete your objective. You must eliminate Sarah bofore you run out of ammo. Good luck!";
 
 
-var instruct = function(){
-  $("h4").html(`${instructionMessage}`);
-};
-setTimeout(instruct, 2000);
-
+// var instruct = function(){
+//   $("h4").html(`${instructionMessage}`);
+// };
+// setTimeout(instruct, 2000);
+//
 // instruct();
-
-setTimeout(function(){
-  $("instructions").html(`${instructionMessage}`);
-}, 3000);
+//
+// setTimeout(function(){
+//   $("instructions").html(`${instructionMessage}`);
+// }, 3000);
   // Global Variables and objects
 
   var ammoCount = 0;
@@ -36,6 +36,23 @@ setTimeout(function(){
   };
 
 
+
+
+$(".yellow-pages").on("click", pushToButtons);
+  //Checking conditions for winnning.
+    var didWin = function () {
+      if(ammoCount <= 0) {
+        alert("You ran out of ammo! To the hydraulic press with you!");
+      } else {
+        return;
+    };
+
+
+
+
+
+
+
   // Functions for Mousing over and clicking buttons.
   // Come back to later and try to wrap all of this up in a function or two.
   $("#bottom-right-button").on("mouseenter", function() {
@@ -49,10 +66,11 @@ setTimeout(function(){
 
   $("#bottom-right-button").on("click", function() {
     $(this).addClass("clicked");
-    ammoCount += 14;
+    ammoCount += 19;
     // Assigning the original ammo starter to the bottom-right-button, which should hopefully have the Text "Alamo Guns", by this point."
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
+    alert("You now have 19 rounds of ammo, as you used one round wasting the store owner. He's dead...");
 });
 
 
@@ -68,7 +86,9 @@ setTimeout(function(){
     $(this).addClass("clicked");
     ammoCount -= 3;
     $("h5").html(`AMMO: ${ammoCount}`);
+    alert("You've found and murdered Sarah Connor. In cold blood... You win!!");
     $(this).off();
+    didWin();
   });
 
   //Wrapping up Top Left Button functionality
@@ -86,7 +106,9 @@ setTimeout(function(){
     ammoCount -= 3;
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
+    didWin();
   });
+
   // Top Right Button Clicking.
 
   $("#top-middle-button").on("mouseenter", function() {
@@ -102,7 +124,10 @@ setTimeout(function(){
     ammoCount -= 4;
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
+    didWin();
   });
+
+
   //Top middle button clicking.
 
   $("#bottom-left-button").on("mouseenter", function() {
@@ -114,10 +139,13 @@ setTimeout(function(){
   });
   $("#bottom-left-button").on("click", function() {
     $(this).addClass("clicked");
-    ammoCount -= 3;
+    ammoCount -= 7;
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
+    alert("Kyle Reese was protecting Sarah!! You used 7 rounds of ammo...");
+    didWin();
   });
+
 
   //Bottom left button clicking.
 
@@ -131,16 +159,17 @@ setTimeout(function(){
 
   $("#bottom-middle-button").on("click", function() {
     $(this).addClass("clicked");
-    ammoCount -= 4;
+    ammoCount -= 5;
     $("h5").html(`AMMO: ${ammoCount}`);
     $(this).off();
+    didWin();
   });
+
   //Bottom Middle button clicking
 
 
 
   //Bottom Right Button Clicking
-
 
 
   var chosenLocations = [];
@@ -214,10 +243,10 @@ setTimeout(function(){
   };
 
 
-$(".yellow-pages").on("click", pushToButtons);
 
 
 
+});
 
 //Adding image of Sarah Connor to random index of buttons.
 // var addConnor = function () {
@@ -230,7 +259,7 @@ $(".yellow-pages").on("click", pushToButtons);
 
 
 
-});
+
 
 
 
