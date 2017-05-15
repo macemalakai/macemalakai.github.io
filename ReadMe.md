@@ -9,3 +9,12 @@
 2. CSS
 3. jQuery
 4. @font-famly to source a new font to use.
+
+
+#### Instructions are pretty straightforward. I have to make sure the user starts with a certain button, then gets ammo to start however.
+
+## Unsolved Problems
+1. I couldn't randomize which buttons my targets would go to.
+2. When ammo was out, it would still say the end game message.
+3. Adding classes to certain buttons to show images when the button had a certain class.
+4. Checking to see if elements still had events bound to them. This would be quite handy.
